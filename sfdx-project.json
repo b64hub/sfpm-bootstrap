@@ -1,0 +1,15 @@
+{
+  "packageDirectories": [
+    {
+      "packageName": "sfpm-artifact",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "src/packages/sfpm-artifact",
+      "default": true
+    }
+  ],
+  "name": "sfpm-artifact",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "65.0"
+}
