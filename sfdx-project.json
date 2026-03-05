@@ -6,7 +6,7 @@
       "path": "src/packages/sfpm-artifact",
       "default": true,
       "package": "sfpm-artifact",
-      "versionDescription": "SFPM Artifact"
+      "versionDescription": "sfpm artifact"
     },
     {
       "versionName": "ver 0.1",
@@ -14,7 +14,7 @@
       "path": "src/packages/sfpm-orgs",
       "default": false,
       "package": "sfpm-orgs",
-      "versionDescription": "SFPM Orgs"
+      "versionDescription": "sfpm org pooling"
     },
     {
       "versionName": "ver 0.1",
