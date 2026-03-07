@@ -3,6 +3,7 @@ import { defineOrgConfig } from '@b64/sfpm-orgs';
 import { profileHooks } from '@b64/sfpm-hooks';
 
 export default defineConfig({
+  npmScope: '@b64hub',
   hooks: [
     profileHooks({
         scope: 'org',

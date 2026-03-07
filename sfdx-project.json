@@ -42,6 +42,7 @@
   "packageAliases": {
     "sfpm-artifact": "0HoJz00000001SLKAY",
     "sfpm-orgs": "0HoJz00000001TxKAI",
-    "sfpm": "0HoJz00000001VZKAY"
+    "sfpm": "0HoJz00000001VZKAY",
+    "sfpm-artifact@0.1.0-1": "04tJz000000lVoLIAU"
   }
 }
