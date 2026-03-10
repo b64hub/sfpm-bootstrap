@@ -12,7 +12,6 @@
       "versionName": "ver 0.1",
       "versionNumber": "0.1.0.NEXT",
       "path": "src/packages/sfpm-orgs",
-      "default": false,
       "package": "sfpm-orgs",
       "versionDescription": "sfpm org pooling"
     },
@@ -20,7 +19,6 @@
       "versionName": "ver 0.1",
       "versionNumber": "0.1.0.NEXT",
       "path": "src/packages/sfpm",
-      "default": false,
       "package": "sfpm",
       "versionDescription": "Salesforce Package Manager",
       "dependencies": [
