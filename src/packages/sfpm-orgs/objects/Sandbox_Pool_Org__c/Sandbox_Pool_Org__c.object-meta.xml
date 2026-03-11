@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <externalSharingModel>Private</externalSharingModel>
+    <label>Sandbox Pool Org</label>
+    <nameField>
+        <label>Sandbox Pool Org Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Sandbox Pool Orgs</pluralLabel>
+    <searchLayouts></searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>
