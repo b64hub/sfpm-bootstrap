@@ -1,13 +1,12 @@
 {
+    "compileOnSave": true,
     "compilerOptions": {
         "target": "ESNext",
         "module": "ESNext",
         "moduleResolution": "node",
         "strict": true,
         "skipLibCheck": true,
-        "noEmit": true,
-        "experimentalDecorators": true,
-        "baseUrl": ".",
+        "experimentalDecorators": false,
         "paths": {
             "c/*": ["./*"],
             "lwc": ["../../../../types/lwc"],
@@ -15,7 +14,6 @@
             "@salesforce/*": ["../../../../types/salesforce/*"]
         }
     },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules"],
-    "extends": "../../../../.sfdx/tsconfig.sfdx.json"
+    "include": ["**/*.ts", "../../../../.sfdx/typings/lwc/**/*.d.ts"],
+    "exclude": ["node_modules", "**/__tests__/**"]
 }
