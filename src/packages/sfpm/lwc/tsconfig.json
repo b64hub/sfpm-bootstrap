@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "strict": true,
+        "skipLibCheck": true,
+        "noEmit": true,
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/*": ["./*"],
+            "lwc": ["../../../../types/lwc"],
+            "lightning/*": ["../../../../types/lightning/*"],
+            "@salesforce/*": ["../../../../types/salesforce/*"]
+        }
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"],
+    "extends": "../../../../.sfdx/tsconfig.sfdx.json"
+}

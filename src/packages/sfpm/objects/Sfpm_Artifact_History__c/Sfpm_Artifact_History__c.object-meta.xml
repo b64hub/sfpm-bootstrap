@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Represents a snapshotted sfpm artifact installed in the org.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Sfpm Artifact History</label>
+    <visibility>Public</visibility>
+</CustomObject>

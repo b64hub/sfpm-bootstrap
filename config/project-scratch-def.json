@@ -1,6 +1,6 @@
 {
-  "orgName": "SFPM",
-  "edition": "Developer",
+  "orgName": "sfpm",
+  "edition": "enterprise",
   "features": ["EnableSetPasswordInApi"],
   "settings": {
     "lightningExperienceSettings": {
