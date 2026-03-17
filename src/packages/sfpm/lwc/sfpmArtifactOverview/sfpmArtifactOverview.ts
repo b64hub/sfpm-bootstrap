@@ -177,14 +177,27 @@ export default class SfpmArtifactOverview extends LightningElement {
     }
 
     get artifactList() {
-        return this.artifacts.map((a) => ({
-            ...a,
-            accordionLabel: `${a.Name}  —  v${a.Version__c}`,
-            commitShort: a.Commit_Id__c ? a.Commit_Id__c.substring(0, 8) : '',
-            checksumShort: a.Checksum__c ? a.Checksum__c.substring(0, 12) : '',
-            hasHistory: Boolean(this.historyMap[a.Name]?.length),
-            historyRecords: this.historyMap[a.Name] ?? []
-        }));
+        return this.artifacts.map((a) => {
+            let parsedTags: Array<{ label: string; name: string }> = [];
+            if (a.Tag__c) {
+                try {
+                    const arr = JSON.parse(a.Tag__c) as string[];
+                    parsedTags = arr.map((t) => ({ label: t, name: t }));
+                } catch (_e) {
+                    parsedTags = [{ label: a.Tag__c, name: a.Tag__c }];
+                }
+            }
+            return {
+                ...a,
+                accordionLabel: `${a.Name}@${a.Version__c}`,
+                commitShort: a.Commit_Id__c ? a.Commit_Id__c.substring(0, 8) : '',
+                checksumShort: a.Checksum__c ? a.Checksum__c.substring(0, 12) : '',
+                hasTags: parsedTags.length > 0,
+                tags: parsedTags,
+                hasHistory: Boolean(this.historyMap[a.Name]?.length),
+                historyRecords: this.historyMap[a.Name] ?? []
+            };
+        });
     }
 }
 

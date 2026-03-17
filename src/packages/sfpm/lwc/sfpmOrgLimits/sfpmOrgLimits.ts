@@ -7,7 +7,8 @@ import getOrgLimits from '@salesforce/apex/SfpmEnvironmentController.getOrgLimit
 interface LimitInfo {
     name: string;
     max: number;
-    remaining: number;
+    used: number;
+    remaining?: number; /* backward compat with cached responses */
 }
 
 interface WireResult<T> {
@@ -20,35 +21,71 @@ interface WireError {
     body?: { message?: string } | Array<{ message: string }>;
 }
 
-interface DisplayLimit extends LimitInfo {
+interface DisplayLimit {
     key: string;
+    name: string;
+    max: number;
     used: number;
     pct: number;
     pctLabel: string;
     variant: 'expired' | 'warning' | 'base';
 }
 
-/* Key limits to surface prominently */
-const HIGHLIGHT_LIMITS = new Set([
+/* ── Limit categories ── */
+
+const ORG_LIMITS = new Set([
+    'ActiveScratchOrgs',
+    'DailyScratchOrgs',
+    'ConcurrentAsyncGetReportInstances',
+    'ConcurrentSyncReportRuns',
+    'DailyApiRequests',
+    'DailyAsyncApexExecutions',
+    'DailyAsyncApexTests',
+    'DailyBulkApiRequests',
+    'DailyBulkV2QueryFileStorageMB',
+    'DailyBulkV2QueryJobs',
+    'DailyDurableGenericStreamingApiEvents',
+    'DailyDurableStreamingApiEvents',
+    'DailyGenericStreamingApiEvents',
+    'DailyStreamingApiEvents',
+    'DailyWorkflowEmails',
+    'DataStorageMB',
+    'DurableStreamingApiConcurrentClients',
+    'FileStorageMB',
+    'HourlyAsyncReportRuns',
+    'HourlyDashboardRefreshes',
+    'HourlyDashboardResults',
+    'HourlyDashboardStatuses',
+    'HourlyLongTermIdMapping',
+    'HourlyManagedContentPublishing',
+    'HourlyODataCallout',
+    'HourlyPublishedPlatformEvents',
+    'HourlyPublishedStandardVolumePlatformEvents',
+    'HourlyShortTermIdMapping',
+    'HourlySyncReportRuns',
+    'HourlyTimeBasedWorkflow',
+    'MassEmail',
+    'MonthlyEinsteinDiscoveryStoryCreation',
+    'MonthlyPlatformEventsUsageEntitlement',
+    'SingleEmail',
+    'StreamingApiConcurrentClients'
+]);
+
+const PACKAGE_LIMITS = new Set([
+    'Package2VersionCreates',
+    'Package2VersionCreatesWithoutValidation',
     'DailyApiRequests',
     'DailyAsyncApexExecutions',
     'DailyBulkApiRequests',
     'DailyBulkV2QueryJobs',
-    'DailyStreamingApiEvents',
-    'HourlyAsyncReportRuns',
-    'HourlyDashboardRefreshes',
-    'HourlyODataCallout',
-    'HourlySyncReportRuns',
-    'MassEmail',
-    'SingleEmail',
-    'StreamingApiConcurrentClients',
-    'Package2VersionCreates',
     'DataStorageMB',
     'FileStorageMB'
 ]);
 
 export default class SfpmOrgLimits extends LightningElement {
     @api compact = false;
+    /** Filter category: 'all' | 'org' | 'package' */
+    @api category: string = 'all';
 
     allLimits: DisplayLimit[] = [];
     error: string | undefined;
@@ -72,21 +109,28 @@ export default class SfpmOrgLimits extends LightningElement {
     }
 
     toDisplayLimit(l: LimitInfo): DisplayLimit {
-        const used = l.max - l.remaining;
+        /* Handle both new (used) and cached old (remaining) response shapes */
+        const used = typeof l.used === 'number'
+            ? l.used
+            : typeof l.remaining === 'number'
+                ? l.max - l.remaining
+                : 0;
         const pct = l.max > 0 ? Math.round((used / l.max) * 100) : 0;
         let variant: DisplayLimit['variant'] = 'base';
         if (pct >= 90) variant = 'expired';
         else if (pct >= 70) variant = 'warning';
         return {
-            ...l,
-            key: l.name,
+            name: l.name,
+            max: l.max,
             used,
+            key: l.name,
             pct,
             pctLabel: `${pct}%`,
             variant
         };
     }
 
+    @api
     refresh(): void {
         this.loaded = false;
         refreshApex(this.wiredLimitsResult);
@@ -102,11 +146,25 @@ export default class SfpmOrgLimits extends LightningElement {
         return !this.loaded;
     }
 
+    get categoryFilter(): Set<string> | null {
+        if (this.category === 'org') return ORG_LIMITS;
+        if (this.category === 'package') return PACKAGE_LIMITS;
+        return null;
+    }
+
+    get filteredLimits(): DisplayLimit[] {
+        const filter = this.categoryFilter;
+        if (!filter) return this.allLimits;
+        return this.allLimits.filter((l) => filter.has(l.name));
+    }
+
     get displayLimits(): DisplayLimit[] {
+        const base = this.filteredLimits;
         if (this.showAll || !this.compact) {
-            return this.allLimits;
+            return base;
         }
-        return this.allLimits.filter((l) => HIGHLIGHT_LIMITS.has(l.name));
+        /* In compact mode, show only non-zero usage or high-value limits */
+        return base.filter((l) => l.pct > 0 || l.max > 0);
     }
 
     get hasLimits(): boolean {
@@ -114,11 +172,11 @@ export default class SfpmOrgLimits extends LightningElement {
     }
 
     get toggleLabel(): string {
-        return this.showAll ? 'Show Key Limits' : `Show All (${this.allLimits.length})`;
+        return this.showAll ? 'Show Active Limits' : `Show All (${this.filteredLimits.length})`;
     }
 
     get showToggle(): boolean {
-        return this.compact && this.allLimits.length > 0;
+        return this.compact && this.filteredLimits.length > this.displayLimits.length;
     }
 }
 

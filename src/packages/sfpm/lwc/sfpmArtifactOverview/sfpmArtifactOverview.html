@@ -56,10 +56,14 @@
                                         <p class="field-label">Checksum</p>
                                         <p class="field-value mono-text" title={artifact.Checksum__c}>{artifact.checksumShort}</p>
                                     </div>
-                                    <template if:true={artifact.Tag__c}>
-                                        <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-4 slds-p-bottom_x-small">
+                                    <template if:true={artifact.hasTags}>
+                                        <div class="slds-col slds-size_1-of-1 slds-p-bottom_x-small">
                                             <p class="field-label">Tags</p>
-                                            <p class="field-value">{artifact.Tag__c}</p>
+                                            <div class="tag-pills">
+                                                <template for:each={artifact.tags} for:item="tag">
+                                                    <lightning-badge key={tag.name} label={tag.label} class="slds-m-right_xx-small slds-m-bottom_xx-small tag-pill"></lightning-badge>
+                                                </template>
+                                            </div>
                                         </div>
                                     </template>
                                 </div>
@@ -98,10 +102,10 @@
                 </div>
             </template>
 
-            <!-- API Limits -->
+            <!-- Package Limits -->
             <div class="slds-p-top_small limits-divider">
-                <h3 class="slds-text-title_caps slds-p-horizontal_medium slds-p-bottom_xx-small">API Limits</h3>
-                <c-sfpm-org-limits compact></c-sfpm-org-limits>
+                <h3 class="slds-text-title_caps slds-p-horizontal_medium slds-p-bottom_xx-small">Package Limits</h3>
+                <c-sfpm-org-limits compact category="package"></c-sfpm-org-limits>
             </div>
         </template>
     </lightning-card>

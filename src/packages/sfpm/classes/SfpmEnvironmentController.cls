@@ -43,7 +43,7 @@ public with sharing class SfpmEnvironmentController {
             LimitInfo info = new LimitInfo();
             info.name = key;
             info.max = lim.getLimit();
-            info.remaining = lim.getValue();
+            info.used = lim.getValue();
             result.add(info);
         }
         result.sort();
@@ -53,7 +53,7 @@ public with sharing class SfpmEnvironmentController {
     public class LimitInfo implements Comparable {
         @AuraEnabled public String name;
         @AuraEnabled public Integer max;
-        @AuraEnabled public Integer remaining;
+        @AuraEnabled public Integer used;
         public Integer compareTo(Object other) {
             return this.name.compareTo(((LimitInfo) other).name);
         }
