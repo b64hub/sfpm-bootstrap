@@ -25,10 +25,6 @@
         {
           "package": "sfpm-artifact",
           "versionNumber": "0.1.0.LATEST"
-        },
-        {
-          "package": "sfpm-orgs",
-          "versionNumber": "0.1.0.LATEST"
         }
       ]
     }
