@@ -1,15 +1,42 @@
 {
   "packageDirectories": [
     {
-      "packageName": "sfpm-artifact",
-      "versionName": "ver 0.1",
-      "versionNumber": "0.1.0.NEXT",
+      "package": "sfpm-artifact",
       "path": "src/packages/sfpm-artifact",
+      "versionNumber": "0.1.0.NEXT",
+      "versionName": "ver 0.1",
+      "versionDescription": "sfpm artifact",
       "default": true
+    },
+    {
+      "package": "sfpm-orgs",
+      "path": "src/packages/sfpm-orgs",
+      "versionNumber": "0.1.0.NEXT",
+      "versionName": "ver 0.1",
+      "versionDescription": ""
+    },
+    {
+      "package": "sfpm",
+      "path": "src/packages/sfpm",
+      "versionNumber": "0.1.0.NEXT",
+      "versionName": "ver 0.1",
+      "versionDescription": "Salesforce Package Manager",
+      "dependencies": [
+        {
+          "package": "sfpm-artifact",
+          "versionNumber": "0.1.0.LATEST"
+        }
+      ]
     }
   ],
-  "name": "sfpm-artifact",
+  "name": "sfpm-bootstrap",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "65.0"
+  "sourceApiVersion": "65.0",
+  "packageAliases": {
+    "sfpm-artifact": "0HoJz00000001SLKAY",
+    "sfpm-orgs": "0HoJz00000001YnKAI",
+    "sfpm": "0HoJz00000001VZKAY",
+    "sfpm-artifact@0.1.0-1": "04tJz000000lVoLIAU"
+  }
 }

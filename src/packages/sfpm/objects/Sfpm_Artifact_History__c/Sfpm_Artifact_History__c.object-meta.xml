@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <externalSharingModel>Private</externalSharingModel>
+    <description>Represents a snapshotted sfpm artifact installed in the org.</description>
+    <enableFeeds>false</enableFeeds>
+    <nameField>
+        <label>Sfpm Artifact History Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Sfpm Artifact Histories</pluralLabel>
+    <label>Sfpm Artifact History</label>
+    <searchLayouts></searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

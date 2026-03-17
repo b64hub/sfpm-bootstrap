@@ -1,0 +1,63 @@
+.spinner-container {
+    min-height: 6rem;
+}
+
+.field-label {
+    font-size: 0.75rem;
+    color: var(--slds-g-color-neutral-base-30, #706e6b);
+    text-transform: uppercase;
+    letter-spacing: 0.025rem;
+    margin-bottom: 0.125rem;
+}
+
+.field-value {
+    font-size: 0.875rem;
+    color: var(--slds-g-color-neutral-base-10, #181818);
+}
+
+.mono-text {
+    font-family: var(--slds-g-font-family-mono, 'SF Mono', 'Consolas', 'Menlo', monospace);
+    font-size: 0.8125rem;
+}
+
+.history-section {
+    border-top: 1px solid var(--slds-g-color-border-base-1, #e5e5e5);
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+}
+
+.badge-bar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.25rem;
+}
+
+.badge-history {
+    --sds-c-badge-color-background: var(--slds-g-color-success-base-40, #2e844a);
+    --sds-c-badge-text-color: #fff;
+}
+
+.badge-no-history {
+    --sds-c-badge-color-background: var(--slds-g-color-neutral-base-80, #c9c7c5);
+    --sds-c-badge-text-color: var(--slds-g-color-neutral-base-10, #181818);
+}
+
+.empty-icon {
+    --slds-c-icon-color-foreground-default: var(--slds-g-color-neutral-base-70, #b0adab);
+}
+
+.limits-divider {
+    border-top: 1px solid var(--slds-g-color-border-base-1, #e5e5e5);
+    margin-top: 0.75rem;
+}
+
+.tag-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.125rem;
+}
+
+.tag-pill {
+    --sds-c-badge-color-background: var(--slds-g-color-brand-base-90, #d8edff);
+    --sds-c-badge-text-color: var(--slds-g-color-brand-base-30, #014486);
+    font-size: 0.75rem;
+}

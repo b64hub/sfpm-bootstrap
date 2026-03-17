@@ -46,3 +46,9 @@ $RECYCLE.BIN/
 **/__pycache__/
 **/.venv/
 **/venv/
+
+# sfpm
+.sfpm/
+artifacts/
+
+.npmrc
