@@ -21,6 +21,7 @@
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>sfpm</label>
     <navType>Standard</navType>
+    <tabs>standard-home</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>sfpm_UtilityBar</utilityBar>
 </CustomApplication>
