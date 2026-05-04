@@ -1,6 +1,6 @@
 {
   "description": "sfpm artifact",
-  "name": "@b64hub/sfpm-artifact",
+  "name": "@b64/sfpm-artifact",
   "private": true,
   "scripts": {
     "sfpm:build": "sfpm build sfpm-artifact --turbo",

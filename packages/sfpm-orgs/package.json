@@ -1,5 +1,5 @@
 {
-  "name": "@b64hub/sfpm-orgs",
+  "name": "@b64/sfpm-orgs",
   "private": true,
   "scripts": {
     "sfpm:build": "sfpm build sfpm-orgs --turbo",
@@ -8,7 +8,6 @@
   },
   "sfpm": {
     "packageType": "unlocked",
-    "path": "../../src/packages/sfpm-orgs",
     "packageId": "0HoJz00000001YnKAI"
   },
   "version": "0.1.0"

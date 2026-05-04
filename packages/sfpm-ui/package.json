@@ -1,0 +1,18 @@
+{
+  "description": "Salesforce Package Manager",
+  "name": "@b64/sfpm-ui",
+  "private": true,
+  "scripts": {
+    "sfpm:build": "sfpm build sfpm-ui --turbo",
+    "sfpm:deploy": "sfpm deploy sfpm-ui --turbo",
+    "sfpm:install": "sfpm install sfpm-ui --turbo"
+  },
+  "sfpm": {
+    "packageType": "unlocked",
+    "packageId": "0HoJz00000001VZKAY"
+  },
+  "version": "0.1.0",
+  "dependencies": {
+    "@b64/sfpm-artifact": "workspace:^0.1.0"
+  }
+}
