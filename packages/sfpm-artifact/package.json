@@ -1,0 +1,15 @@
+{
+  "description": "sfpm artifact",
+  "name": "@b64hub/sfpm-artifact",
+  "private": true,
+  "scripts": {
+    "sfpm:build": "sfpm build sfpm-artifact --turbo",
+    "sfpm:deploy": "sfpm deploy sfpm-artifact --turbo",
+    "sfpm:install": "sfpm install sfpm-artifact --turbo"
+  },
+  "sfpm": {
+    "packageType": "unlocked",
+    "packageId": "0HoJz00000001SLKAY"
+  },
+  "version": "0.1.0"
+}

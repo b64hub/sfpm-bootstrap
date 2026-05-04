@@ -1,0 +1,51 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    ".forceignore"
+  ],
+  "tasks": {
+    "sfpm:build": {
+      "cache": true,
+      "dependsOn": [
+        "^sfpm:build"
+      ],
+      "env": [
+        "SF_DEV_HUB",
+        "SFPM_FORCE_BUILD",
+        "SFDX_AUTH_URL",
+        "SF_ACCESS_TOKEN"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$"
+      ],
+      "outputs": []
+    },
+    "sfpm:deploy": {
+      "cache": true,
+      "dependsOn": [
+        "^sfpm:deploy"
+      ],
+      "env": [
+        "SF_TARGET_ORG",
+        "SFDX_AUTH_URL",
+        "SF_ACCESS_TOKEN"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$"
+      ],
+      "outputs": []
+    },
+    "sfpm:install": {
+      "cache": false,
+      "dependsOn": [
+        "sfpm:build",
+        "^sfpm:install"
+      ],
+      "env": [
+        "SF_TARGET_ORG",
+        "SFDX_AUTH_URL",
+        "SF_ACCESS_TOKEN"
+      ]
+    }
+  }
+}

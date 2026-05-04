@@ -1,0 +1,15 @@
+{
+  "name": "@b64hub/sfpm-orgs",
+  "private": true,
+  "scripts": {
+    "sfpm:build": "sfpm build sfpm-orgs --turbo",
+    "sfpm:deploy": "sfpm deploy sfpm-orgs --turbo",
+    "sfpm:install": "sfpm install sfpm-orgs --turbo"
+  },
+  "sfpm": {
+    "packageType": "unlocked",
+    "path": "../../src/packages/sfpm-orgs",
+    "packageId": "0HoJz00000001YnKAI"
+  },
+  "version": "0.1.0"
+}
