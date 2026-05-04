@@ -8,7 +8,8 @@
   },
   "sfpm": {
     "packageType": "unlocked",
-    "packageId": "0HoJz00000001YnKAI"
+    "packageId": "0HoJz00000001YnKAI",
+    "orgDependent": true
   },
   "version": "0.1.0"
 }
