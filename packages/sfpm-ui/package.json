@@ -8,8 +8,7 @@
     "sfpm:install": "sfpm install sfpm-ui --turbo"
   },
   "sfpm": {
-    "packageType": "unlocked",
-    "packageId": "0HoJz00000001VZKAY"
+    "packageType": "unlocked"
   },
   "version": "0.1.0",
   "dependencies": {

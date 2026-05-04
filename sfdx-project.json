@@ -1,10 +1,5 @@
 {
   "namespace": "",
-  "packageAliases": {
-    "sfpm-artifact": "0HoJz00000001SLKAY",
-    "sfpm-orgs": "0HoJz00000001YnKAI",
-    "sfpm-ui": "0HoJz00000001VZKAY"
-  },
   "packageDirectories": [
     {
       "package": "sfpm-artifact",

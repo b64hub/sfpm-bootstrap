@@ -8,8 +8,7 @@
     "sfpm:install": "sfpm install sfpm-artifact --turbo"
   },
   "sfpm": {
-    "packageType": "unlocked",
-    "packageId": "0HoJz00000001SLKAY"
+    "packageType": "unlocked"
   },
   "version": "0.1.0"
 }
