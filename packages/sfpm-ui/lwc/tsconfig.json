@@ -3,7 +3,6 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true,
     "experimentalDecorators": false,
